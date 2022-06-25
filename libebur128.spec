@@ -4,7 +4,7 @@
 #
 Name     : libebur128
 Version  : 1.2.6
-Release  : 3
+Release  : 4
 URL      : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Source0  : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Summary  : No detailed summary available
@@ -58,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656045996
+export SOURCE_DATE_EPOCH=1656129647
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -91,7 +91,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1656045996
+export SOURCE_DATE_EPOCH=1656129647
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libebur128
 cp %{_builddir}/libebur128-1.2.6/COPYING %{buildroot}/usr/share/package-licenses/libebur128/2627ff03833f74ed51a7f43c55d30b249b6a0707
