@@ -4,7 +4,7 @@
 #
 Name     : libebur128
 Version  : 1.2.6
-Release  : 7
+Release  : 8
 URL      : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Source0  : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Summary  : No detailed summary available
