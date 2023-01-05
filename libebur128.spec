@@ -4,7 +4,7 @@
 #
 Name     : libebur128
 Version  : 1.2.6
-Release  : 9
+Release  : 10
 URL      : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Source0  : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Summary  : No detailed summary available
@@ -14,6 +14,9 @@ Requires: libebur128-lib = %{version}-%{release}
 Requires: libebur128-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : pkg-config
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 libebur128
@@ -58,17 +61,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1665098367
+export SOURCE_DATE_EPOCH=1672877037
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
@@ -78,10 +81,10 @@ export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -mtune=skylake "
-export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -mtune=skylake "
-export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -mtune=skylake "
-export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -mtune=skylake "
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz -march=x86-64-v3 "
 export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
@@ -91,12 +94,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1665098367
+export SOURCE_DATE_EPOCH=1672877037
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libebur128
-cp %{_builddir}/libebur128-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libebur128/2627ff03833f74ed51a7f43c55d30b249b6a0707
-cp %{_builddir}/libebur128-%{version}/doc/license/R128Scan.txt %{buildroot}/usr/share/package-licenses/libebur128/677e4a0f00605ca9e5d206c562652bfdf89b8456
-cp %{_builddir}/libebur128-%{version}/doc/license/queue.txt %{buildroot}/usr/share/package-licenses/libebur128/38d1b75e874a9f1e5e4a61e06953710f670a32fe
+cp %{_builddir}/libebur128-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libebur128/2627ff03833f74ed51a7f43c55d30b249b6a0707 || :
+cp %{_builddir}/libebur128-%{version}/doc/license/R128Scan.txt %{buildroot}/usr/share/package-licenses/libebur128/677e4a0f00605ca9e5d206c562652bfdf89b8456 || :
+cp %{_builddir}/libebur128-%{version}/doc/license/queue.txt %{buildroot}/usr/share/package-licenses/libebur128/38d1b75e874a9f1e5e4a61e06953710f670a32fe || :
 pushd clr-build-avx2
 %make_install_v3  || :
 popd
