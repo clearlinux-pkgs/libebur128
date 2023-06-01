@@ -5,7 +5,7 @@
 #
 Name     : libebur128
 Version  : 1.2.6
-Release  : 12
+Release  : 13
 URL      : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Source0  : https://github.com/jiixyj/libebur128/archive/v1.2.6/libebur128-1.2.6.tar.gz
 Summary  : No detailed summary available
@@ -62,7 +62,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682994606
+export SOURCE_DATE_EPOCH=1685637300
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -95,7 +95,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682994606
+export SOURCE_DATE_EPOCH=1685637300
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libebur128
 cp %{_builddir}/libebur128-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libebur128/2627ff03833f74ed51a7f43c55d30b249b6a0707 || :
@@ -114,14 +114,12 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libebur128.so
 /usr/include/ebur128.h
 /usr/lib64/libebur128.so
 /usr/lib64/pkgconfig/libebur128.pc
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libebur128.so.1
 /V3/usr/lib64/libebur128.so.1.2.6
 /usr/lib64/libebur128.so.1
 /usr/lib64/libebur128.so.1.2.6
